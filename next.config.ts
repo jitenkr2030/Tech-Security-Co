@@ -10,11 +10,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   
-  // ESLint configuration
-  eslint: {
-    // Don't ignore ESLint errors in production
-    ignoreDuringBuilds: false,
-  },
+  // ESLint configuration is now handled separately in eslint.config.mjs
   
   // Experimental features
   experimental: {
