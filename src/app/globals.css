@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../styles/mobile-touch.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -118,5 +119,227 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 16px;
+  }
+  
+  /* Larger interactive elements */
+  button, 
+  .btn, 
+  input[type="button"], 
+  input[type="submit"], 
+  input[type="reset"],
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  /* Larger form controls */
+  input, 
+  select, 
+  textarea {
+    min-height: 44px;
+    font-size: 16px;
+    padding: 12px;
+  }
+  
+  /* Larger links and clickable areas */
+  a, 
+  .link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    text-decoration: none;
+  }
+  
+  /* Prevent accidental zoom on iOS */
+  input, 
+  textarea, 
+  select {
+    font-size: 16px !important;
+  }
+  
+  /* Better spacing for touch */
+  .touch-spacing {
+    margin: 8px 0;
+  }
+  
+  /* Larger checkboxes and radio buttons */
+  input[type="checkbox"], 
+  input[type="radio"] {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+  
+  /* Better card interactions */
+  .card {
+    margin: 8px 0;
+    border-radius: 12px;
+  }
+  
+  /* Larger navigation items */
+  nav a, 
+  .nav-item {
+    min-height: 48px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Better modal interactions */
+  .modal-close {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  /* Touch-friendly dropdowns */
+  .dropdown-item {
+    min-height: 44px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Better table interactions */
+  table {
+    font-size: 16px;
+  }
+  
+  td, 
+  th {
+    padding: 12px 8px;
+    min-height: 44px;
+  }
+  
+  /* Touch-friendly tabs */
+  .tab {
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  /* Better pagination */
+  .pagination-item {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+}
+
+/* Smooth scrolling for better mobile experience */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text selection on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Better focus states for keyboard navigation */
+*:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Remove default tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better button feedback */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Offline state styling */
+body.offline::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #ef4444;
+  z-index: 9999;
+}
+
+body.offline .offline-indicator {
+  display: block;
+}
+
+.offline-indicator {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ef4444;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  z-index: 9998;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
   }
 }

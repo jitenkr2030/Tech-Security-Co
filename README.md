@@ -1,141 +1,263 @@
-# 🚀 Welcome to Z.ai Code Scaffold
+# SecurityGuard Pro
 
-A modern, production-ready web application scaffold powered by cutting-edge technologies, designed to accelerate your development with [Z.ai](https://chat.z.ai)'s AI-powered coding assistance.
+A comprehensive security guard management system built with modern web technologies, featuring real-time location tracking, attendance management, geofencing, alert systems, and multi-tenant support.
 
-## ✨ Technology Stack
+## 🚀 Features
 
-This scaffold provides a robust foundation built with:
+### Core Features
+- **Real-time Location Tracking**: GPS-based monitoring of security guards with live map visualization
+- **Geofencing**: Create and manage virtual boundaries with automated breach alerts
+- **Attendance Management**: Automated check-in/checkout with facial recognition and GPS verification
+- **Alert System**: Real-time notifications for security events, emergencies, and system alerts
+- **Multi-tenant Architecture**: Support for multiple organizations with complete data isolation
+- **Mobile App Support**: Native mobile applications with offline data synchronization
 
-### 🎯 Core Framework
-- **⚡ Next.js 15** - The React framework for production with App Router
-- **📘 TypeScript 5** - Type-safe JavaScript for better developer experience
-- **🎨 Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+### Advanced Features
+- **Document Management**: Centralized storage for licenses, certificates, and compliance documents
+- **Billing & Subscriptions**: Stripe-powered subscription management with multiple pricing tiers
+- **Guard Scheduling**: Advanced scheduling system with shift management and coverage monitoring
+- **Reporting & Analytics**: Comprehensive reports and dashboards for operations insights
+- **PSARA Compliance**: Built-in compliance with Private Security Agencies Regulation Act (India)
+- **Health & Safety Monitoring**: Wellness checks and health record management
 
-### 🧩 UI Components & Styling
-- **🧩 shadcn/ui** - High-quality, accessible components built on Radix UI
-- **🎯 Lucide React** - Beautiful & consistent icon library
-- **🌈 Framer Motion** - Production-ready motion library for React
-- **🎨 Next Themes** - Perfect dark mode in 2 lines of code
+## 🛠 Technology Stack
 
-### 📋 Forms & Validation
-- **🎣 React Hook Form** - Performant forms with easy validation
-- **✅ Zod** - TypeScript-first schema validation
+### Frontend
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **State Management**: Zustand, TanStack Query
+- **Real-time**: Socket.io Client
+- **Authentication**: NextAuth.js
 
-### 🔄 State Management & Data Fetching
-- **🐻 Zustand** - Simple, scalable state management
-- **🔄 TanStack Query** - Powerful data synchronization for React
-- **🌐 Axios** - Promise-based HTTP client
+### Backend
+- **Runtime**: Node.js 18+
+- **Framework**: Next.js API Routes
+- **Database**: Prisma ORM with SQLite/PostgreSQL
+- **Authentication**: NextAuth.js
+- **Real-time**: Socket.io
+- **Caching**: Memory cache (development), Redis (production)
 
-### 🗄️ Database & Backend
-- **🗄️ Prisma** - Next-generation Node.js and TypeScript ORM
-- **🔐 NextAuth.js** - Complete open-source authentication solution
+### Infrastructure
+- **Deployment**: Vercel (recommended), Docker containers
+- **Database**: SQLite (development), PostgreSQL (production)
+- **Storage**: Local (development), AWS S3 (production)
+- **Payment Processing**: Stripe
+- **Email Service**: SMTP/Third-party integration
+- **SMS Service**: Twilio integration
 
-### 🎨 Advanced UI Features
-- **📊 TanStack Table** - Headless UI for building tables and datagrids
-- **🖱️ DND Kit** - Modern drag and drop toolkit for React
-- **📊 Recharts** - Redefined chart library built with React and D3
-- **🖼️ Sharp** - High performance image processing
+## 📦 Installation
 
-### 🌍 Internationalization & Utilities
-- **🌍 Next Intl** - Internationalization library for Next.js
-- **📅 Date-fns** - Modern JavaScript date utility library
-- **🪝 ReactUse** - Collection of essential React hooks for modern development
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- Database (SQLite for development, PostgreSQL for production)
 
-## 🎯 Why This Scaffold?
+### Development Setup
 
-- **🏎️ Fast Development** - Pre-configured tooling and best practices
-- **🎨 Beautiful UI** - Complete shadcn/ui component library with advanced interactions
-- **🔒 Type Safety** - Full TypeScript configuration with Zod validation
-- **📱 Responsive** - Mobile-first design principles with smooth animations
-- **🗄️ Database Ready** - Prisma ORM configured for rapid backend development
-- **🔐 Auth Included** - NextAuth.js for secure authentication flows
-- **📊 Data Visualization** - Charts, tables, and drag-and-drop functionality
-- **🌍 i18n Ready** - Multi-language support with Next Intl
-- **🚀 Production Ready** - Optimized build and deployment settings
-- **🤖 AI-Friendly** - Structured codebase perfect for AI assistance
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/jitenkr2030/securitify.git
+   cd securitify
+   ```
 
-## 🚀 Quick Start
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```bash
-# Install dependencies
-npm install
+3. **Environment configuration**
+   ```bash
+   cp .env.example .env.local
+   ```
 
-# Start development server
-npm run dev
+   Edit `.env.local` with your configuration:
+   ```env
+   # Application
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+   NODE_ENV=development
 
-# Build for production
-npm run build
+   # Database
+   DATABASE_URL="file:./dev.db"
 
-# Start production server
-npm start
-```
+   # Authentication
+   NEXTAUTH_SECRET=your-secret-key
+   NEXTAUTH_URL=http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) to see your application running.
+   # Email
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_SECURE=false
+   SMTP_USER=your-email@gmail.com
+   SMTP_PASS=your-app-password
+   EMAIL_FROM=noreply@yourcompany.com
 
-## 🤖 Powered by Z.ai
+   # Payment (Stripe)
+   STRIPE_PUBLISHABLE_KEY=pk_test_your-key
+   STRIPE_SECRET_KEY=sk_test_your-key
+   STRIPE_WEBHOOK_SECRET=whsec_your-key
+   ```
 
-This scaffold is optimized for use with [Z.ai](https://chat.z.ai) - your AI assistant for:
+4. **Database setup**
+   ```bash
+   # Generate Prisma client
+   npx prisma generate
 
-- **💻 Code Generation** - Generate components, pages, and features instantly
-- **🎨 UI Development** - Create beautiful interfaces with AI assistance  
-- **🔧 Bug Fixing** - Identify and resolve issues with intelligent suggestions
-- **📝 Documentation** - Auto-generate comprehensive documentation
-- **🚀 Optimization** - Performance improvements and best practices
+   # Run database migrations
+   npx prisma db push
 
-Ready to build something amazing? Start chatting with Z.ai at [chat.z.ai](https://chat.z.ai) and experience the future of AI-powered development!
+   # (Optional) Seed database with initial data
+   npm run db:seed
+   ```
 
-## 📁 Project Structure
+5. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-```
-src/
-├── app/                 # Next.js App Router pages
-├── components/          # Reusable React components
-│   └── ui/             # shadcn/ui components
-├── hooks/              # Custom React hooks
-└── lib/                # Utility functions and configurations
-```
+   Visit `http://localhost:3000` to view the application.
 
-## 🎨 Available Features & Components
+### Production Setup
 
-This scaffold includes a comprehensive set of modern web development tools:
+See the [Administrator Guide](docs/admin/README.md) for detailed production deployment instructions including:
+- Server preparation
+- Database configuration
+- Docker deployment
+- SSL certificate setup
+- Nginx configuration
 
-### 🧩 UI Components (shadcn/ui)
-- **Layout**: Card, Separator, Aspect Ratio, Resizable Panels
-- **Forms**: Input, Textarea, Select, Checkbox, Radio Group, Switch
-- **Feedback**: Alert, Toast (Sonner), Progress, Skeleton
-- **Navigation**: Breadcrumb, Menubar, Navigation Menu, Pagination
-- **Overlay**: Dialog, Sheet, Popover, Tooltip, Hover Card
-- **Data Display**: Badge, Avatar, Calendar
+## 📱 Usage
 
-### 📊 Advanced Data Features
-- **Tables**: Powerful data tables with sorting, filtering, pagination (TanStack Table)
-- **Charts**: Beautiful visualizations with Recharts
-- **Forms**: Type-safe forms with React Hook Form + Zod validation
+### For Users
+Refer to the [User Guide](docs/user/README.md) for comprehensive documentation on:
+- Getting started with the platform
+- Dashboard navigation
+- Guard management
+- Location tracking
+- Attendance management
+- Alert handling
+- Mobile app usage
 
-### 🎨 Interactive Features
-- **Animations**: Smooth micro-interactions with Framer Motion
-- **Drag & Drop**: Modern drag-and-drop functionality with DND Kit
-- **Theme Switching**: Built-in dark/light mode support
+### For Administrators
+Refer to the [Administrator Guide](docs/admin/README.md) for:
+- System installation and setup
+- User and tenant management
+- System configuration
+- Security management
+- Performance monitoring
+- Backup and recovery procedures
 
-### 🔐 Backend Integration
-- **Authentication**: Ready-to-use auth flows with NextAuth.js
-- **Database**: Type-safe database operations with Prisma
-- **API Client**: HTTP requests with Axios + TanStack Query
-- **State Management**: Simple and scalable with Zustand
+### For Developers
+Refer to the [API Documentation](docs/api/README.md) for:
+- Complete API reference
+- Authentication details
+- Endpoint documentation
+- Webhook information
+- SDK usage examples
+- Best practices
 
-### 🌍 Production Features
-- **Internationalization**: Multi-language support with Next Intl
-- **Image Optimization**: Automatic image processing with Sharp
-- **Type Safety**: End-to-end TypeScript with Zod validation
-- **Essential Hooks**: 100+ useful React hooks with ReactUse for common patterns
+## 🔧 Configuration
 
-## 🤝 Get Started with Z.ai
+### Environment Variables
+The application uses several environment variables for configuration. Refer to `.env.example` for a complete list of required and optional variables.
 
-1. **Clone this scaffold** to jumpstart your project
-2. **Visit [chat.z.ai](https://chat.z.ai)** to access your AI coding assistant
-3. **Start building** with intelligent code generation and assistance
-4. **Deploy with confidence** using the production-ready setup
+### Database Configuration
+The application supports both SQLite (for development) and PostgreSQL (for production). Database configuration is handled through the `DATABASE_URL` environment variable.
+
+### Multi-tenant Setup
+The system supports multi-tenant architecture with data isolation at the database level. Tenants can be managed through the admin interface or API.
+
+## 📊 Features Overview
+
+### Guard Management
+- Complete guard profiles with photos and contact information
+- License and certification tracking with expiry alerts
+- Attendance monitoring with multiple verification methods
+- Performance evaluation and reporting
+- Equipment management and assignment
+
+### Location & Geofencing
+- Real-time GPS tracking with configurable update intervals
+- Circular and polygonal geofence creation
+- Automated breach alerts with escalation rules
+- Location history and trail visualization
+- Battery level monitoring
+
+### Alert System
+- Multiple alert types (geofence, emergency, system, schedule)
+- Configurable severity levels and notification channels
+- Alert acknowledgment and resolution workflows
+- Escalation rules and automated procedures
+- Alert analytics and reporting
+
+### Billing & Subscriptions
+- Three-tier subscription model (Basic, Professional, Enterprise)
+- Stripe integration for secure payment processing
+- Usage monitoring and overage handling
+- Automated invoicing and receipt generation
+- Subscription management and upgrades/downgrades
+
+### Mobile Application
+- Native iOS and Android applications
+- Offline data synchronization
+- Push notifications for alerts
+- GPS-based check-in/checkout
+- Photo capture for verification
+- Emergency panic button
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+- Follow the existing code style and structure
+- Use TypeScript for all new code
+- Write comprehensive tests for new features
+- Update documentation as needed
+- Ensure all existing tests pass
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support and questions:
+- **Documentation**: See the docs/ directory for comprehensive guides
+- **Issues**: Report bugs and request features on GitHub Issues
+- **Community**: Join our community discussions
+- **Email**: Contact the development team for enterprise support
+
+## 🗺 Roadmap
+
+### Upcoming Features
+- [ ] Advanced AI-powered incident prediction
+- [ ] Integration with biometric devices
+- [ ] Enhanced mobile offline capabilities
+- [ ] Advanced analytics dashboard
+- [ ] Third-party integrations (HR systems, access control)
+- [ ] Multi-language support
+- [ ] Advanced reporting and export features
+
+### Version History
+- **v1.0.0**: Initial release with core features
+- **v1.1.0**: Mobile app enhancements and offline sync
+- **v1.2.0**: PSARA compliance features
+- **v1.3.0**: Advanced reporting and analytics
+- **v2.0.0**: Enterprise features and scalability improvements
+
+## 🙏 Acknowledgments
+
+- Next.js team for the excellent framework
+- Prisma team for the modern ORM
+- Stripe for payment processing integration
+- All contributors and community members
+- Security agencies that provided valuable feedback and requirements
 
 ---
 
-Built with ❤️ for the developer community. Supercharged by [Z.ai](https://chat.z.ai) 🚀
+**SecurityGuard Pro** - Modern security management for the digital age.

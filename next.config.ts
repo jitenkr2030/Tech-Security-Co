@@ -1,16 +1,68 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  /* config options here */
+  // Enable strict mode for better development experience
+  reactStrictMode: true,
+  
+  // TypeScript configuration
   typescript: {
-    ignoreBuildErrors: true,
+    // Don't ignore build errors in production
+    ignoreBuildErrors: false,
   },
-  // 禁用 Next.js 热重载，由 nodemon 处理重编译
-  reactStrictMode: false,
+  
+  // ESLint configuration
   eslint: {
-    // 构建时忽略ESLint错误
-    ignoreDuringBuilds: true,
+    // Don't ignore ESLint errors in production
+    ignoreDuringBuilds: false,
+  },
+  
+  // Experimental features
+  experimental: {
+    // Enable optimized package imports
+    optimizePackageImports: ['lucide-react'],
+  },
+  
+  // Compression
+  compress: true,
+  
+  // Images configuration
+  images: {
+    formats: ['image/webp', 'image/avif'],
+  },
+  
+  // PWA configuration
+  async headers() {
+    return [
+      {
+        source: '/sw.js',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+        ],
+      },
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
+  
+  // Enable static generation for better performance
+  output: 'standalone',
+  
+  // Generate source maps for better debugging
+  productionBrowserSourceMaps: false,
+  
+  // Environment variables that should be available to the client
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
 };
 
