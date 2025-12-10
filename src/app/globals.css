@@ -192,20 +192,20 @@ nav a,
 /* Mobile-specific optimizations */
 @media (hover: none) and (pointer: coarse) {
   /* Remove hover effects on touch devices */
-  .hover\:bg-gray-100:hover {
+  .hover-bg-gray-100:hover {
     background-color: transparent;
   }
   
-  .hover\:bg-blue-50:hover {
+  .hover-bg-blue-50:hover {
     background-color: transparent;
   }
   
   /* Replace hover with active states */
-  .touch-active:bg-gray-100:active {
+  .touch-active-bg-gray-100:active {
     background-color: #f3f4f6;
   }
   
-  .touch-active:bg-blue-50:active {
+  .touch-active-bg-blue-50:active {
     background-color: #eff6ff;
   }
   
