@@ -14,9 +14,9 @@
   ],
   "env": {
     "NEXTAUTH_URL": "https://securitify-a8uu-ez8xqi77f-jiten-kumars-projects.vercel.app",
-    "DATABASE_URL": "file:./data/dev.db",
+    "DATABASE_URL": "file:./dev.db",
     "NODE_ENV": "production"
   },
-  "buildCommand": "npm run build",
-  "installCommand": "npm install && npx prisma generate"
+  "buildCommand": "npm run vercel-build",
+  "installCommand": "npm install"
 }

@@ -50,9 +50,6 @@ const nextConfig: NextConfig = {
     ];
   },
   
-  // Enable static generation for better performance
-  output: 'standalone',
-  
   // Generate source maps for better debugging
   productionBrowserSourceMaps: false,
   
@@ -60,6 +57,12 @@ const nextConfig: NextConfig = {
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
+  
+  // Ensure proper asset handling for Vercel
+  assetPrefix: process.env.NODE_ENV === 'production' ? process.env.VERCEL_URL : '',
+  
+  // Disable standalone output for Vercel compatibility
+  // output: 'standalone', // Commented out for Vercel compatibility
 };
 
 export default nextConfig;
